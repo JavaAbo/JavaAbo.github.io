@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>仿网站导航</title>
+    <title>yorbest</title>
     <style>
         :root {
             --primary-color: #333;
@@ -15,7 +15,10 @@
             --tab-bg-color: #333;
             --tab-active-color: #fff;
             --tab-inactive-color: #ddd;
-            --tile-bg-color: #00f;
+            --tile-bg-color: rgb(235, 191, 15);
+            --carousel-bg-color: #fff;
+            --carousel-img-width: 250px;
+            --carousel-img-height: 180px;
         }
         body {
             font-family: Arial, sans-serif;
@@ -26,7 +29,7 @@
         header, footer {
             background-color: var(--header-footer-bg-color);
             color: var(--text-color);
-            padding: 20px;
+            padding: 10px;
             text-align: center;
         }
         h1 {
@@ -42,7 +45,7 @@
             color: var(--link-color);
             text-decoration: none;
             margin: 0 10px;
-            padding: 10px 20px;
+            padding: 20px 20px;
             background-color: var(--tab-inactive-color);
             border-radius: 0;
             transition: background-color 0.3s ease;
@@ -56,7 +59,7 @@
             color: var(--primary-color);
         }
         .tab-content {
-            padding: 20px;
+            padding: 30px;
             background-color: #fff;
         }
         .tab-content h2 {
@@ -73,8 +76,8 @@
         }
         .tile {
             display: inline-block;
-            margin: 10px;
-            padding: 20px;
+            margin: 50px;
+            padding: 50px;
             background-color: var(--tile-bg-color);
             color: var(--text-color);
             text-align: center;
@@ -85,62 +88,119 @@
             background-color: var(--link-hover-color);
             color: var(--primary-color);
         }
+        .carousel {
+            background-color: var(--carousel-bg-color);
+            padding: 10px;
+            text-align: center;
+        }
+        .carousel img {
+            width: var(--carousel-img-width);
+            height: var(--carousel-img-height);
+            margin: 10px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .carousel img:hover {
+            transform: scale(1.1);
+        }
         footer {
             position: fixed;
             bottom: 0;
             width: 100%;
+            background-color: var(--header-footer-bg-color);
+            color: var(--text-color);
+            padding: 1px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>仿网站导航</h1>
-    </header>
-    <nav>
-        <a href="#" class="tab-link active" onclick="openTab(event, 'tab1')">Tab 1</a>
-        <a href="#" class="tab-link" onclick="openTab(event, 'tab2')">Tab 2</a>
-        <a href="#" class="tab-link" onclick="openTab(event, 'tab3')">Tab 3</a>
-    </nav>
-    <div id="tab1" class="tab-content active">
-        <h2>Tab 1</h2>
-        <p>这是第一个Tab的内容。</p>
+<header>
+    <h1>Yorbest</h1>
+</header>
+<nav>
+    <a href="#" class="tab-link active" onclick="openTab(event, 'tab1')">常用链接</a>
+    <a href="#" class="tab-link" onclick="openTab(event, 'tab2')">跨境选品</a>
+    <a href="#" class="tab-link" onclick="openTab(event, 'tab3')">竞品分析</a>
+    <a href="#" class="tab-link" onclick="openTab(event, 'tab4')">关于我们</a>
+</nav>
+<div id="tab1" class="tab-content active">
+    <div class="carousel">
         <div class="tile">
-            <a href="#">磁贴1111111111111</a>
+            <a href="#">亚马逊</a>
         </div>
         <div class="tile">
-            <a href="#">磁贴2杀杀杀</a>
+            <a href="#">磁贴1磁贴1</a>
         </div>
         <div class="tile">
-            <a href="#">磁贴单独3</a>
+            <a href="#">磁贴1磁贴1</a>
+        </div>
+
+        <div class="tile">
+            <a href="#">磁贴1磁贴1</a>
+        </div>
+        <div class="tile">
+            <a href="#">磁贴1磁贴1</a>
+        </div>
+        <div class="tile">
+            <a href="#">磁贴1磁贴1</a>
+        </div>
+        <div class="tile">
+            <a href="#">磁贴1磁贴1</a>
+        </div>
+        <div class="tile">
+            <a href="#">磁贴1磁贴1</a>
+        </div>
+        <div class="tile">
+            <a href="#">磁贴1磁贴1</a>
+        </div>
+        <div class="tile">
+            <a href="#">磁贴1磁贴1</a>
+        </div>
+        <div class="tile">
+            <a href="#">磁贴1磁贴1</a>
+        </div>
+        <div class="tile">
+            <a href="#">磁贴1磁贴1</a>
         </div>
     </div>
-    <div id="tab2" class="tab-content inactive">
-        <h2>Tab 2</h2>
-        <p>这是第二个Tab的内容。</p>
+</div>
+<div id="tab2" class="tab-content inactive">
+    <div class="carousel">
+        <img src="https://img.zcool.cn/community/01619d5b4f3962a80121ade06ca40e.jpg?imageMogr2/format/webp" alt="Image 1">
+        <img src="https://img.zcool.cn/community/01619d5b4f3962a80121ade06ca40e.jpg?imageMogr2/format/webp" alt="Image 2">
+        <img src="https://img.zcool.cn/community/01619d5b4f3962a80121ade06ca40e.jpg?imageMogr2/format/webp" alt="Image 3">
+        <img src="https://img.zcool.cn/community/01619d5b4f3962a80121ade06ca40e.jpg?imageMogr2/format/webp" alt="Image 1">
+
     </div>
-    <div id="tab3" class="tab-content inactive">
-        <h2>Tab 3</h2>
-        <p>这是第三个Tab的内容。</p>
-    </div>
-    <footer>
-        <p>版权所有 &copy; 2021 仿网站导航</p>
-    </footer>
-    <script>
-        function openTab(evt, tabName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].classList.remove("active");
-                tabcontent[i].classList.add("inactive");
-            }
-            tablinks = document.getElementsByClassName("tab-link");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].classList.remove("active");
-            }
-            document.getElementById(tabName).classList.remove("inactive");
-            document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
+</div>
+<div id="tab3" class="tab-content inactive">
+    <h2>跨境新闻</h2>
+    <p>这是第三个Tab的内容。</p>
+</div>
+<div id="tab4" class="tab-content inactive">
+    <h2>Tab 4</h2>
+    <p>这是第四个Tab的内容。</p>
+</div>
+<footer>
+    <p> By &copy; Yorbest</p>
+</footer>
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].classList.remove("active");
+            tabcontent[i].classList.add("inactive");
         }
-    </script>
+        tablinks = document.getElementsByClassName("tab-link");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
+        }
+        document.getElementById(tabName).classList.remove("inactive");
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+</script>
 </body>
 </html>
