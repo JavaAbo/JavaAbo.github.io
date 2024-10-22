@@ -1,31 +1,44 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>yorbest</title>
-    <link rel="icon" type="image/png" href="https://img2.baidu.com/it/u=1461572074,1494132136&fm=253&fmt=auto&app=138&f=JPEG?w=260&h=260">
+    <title>Myinfo</title>
+    <!-- 引入 Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- 引入 Slick 轮播图插件 CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" />
     <style>
+      .slider img {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+      .navbar-custom {
+            background-color: #3498db;
+            color: white;
+        }
         :root {
             --primary-color: #f5c301;
             --secondary-color: #ddd;
             --text-color: #bcaa0a;
             --link-color: #011a22;
             --link-hover-color: #fff;
-            --header-footer-bg-color: #f4f4f4;
             --tab-bg-color: #000000;
             --tab-active-color: #fff;
             --tab-inactive-color: #ddd;
-            --tile-bg-color: rgba(111, 120, 119, 0.28);
-            --carousel-bg-color: #ffffff;
-            --carousel-img-width: 250px;
-            --carousel-img-height: 180px;
         }
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         header, footer {
             background-color: var(--header-footer-bg-color);
@@ -39,7 +52,7 @@
         nav {
             background-color: var(--tab-bg-color);
             color: #fff;
-            padding: 10px;
+            padding: 5px;
             text-align: center;
         }
         nav a {
@@ -59,189 +72,147 @@
             background-color: var(--tab-active-color);
             color: var(--primary-color);
         }
-        .tab-content {
-            padding: 30px;
+      .tab-content {
+            padding: 20px;
             background-color: #fff;
+            flex: 1;
         }
-        .tab-content h2 {
-            margin-top: 0;
-        }
-        .tab-content p {
-            margin-bottom: 0;
-        }
-        .tab-content.active {
+      .tab-content.active {
             display: block;
         }
-        .tab-content.inactive {
+      .tab-content.inactive {
             display: none;
         }
-        .tile {
-            display: inline-block;
-            margin: 50px;
-            padding: 50px;
-            background-color: var(--tile-bg-color);
-            color: var(--text-color);
-            text-align: center;
-            border-radius: 40px;
-            transition: background-color 0.3s ease;
-        }
-        .tile:hover {
-            background-color: var(--link-hover-color);
-            color: var(--primary-color);
-        }
-        .caro {
-            width: 100%; /* 设置div的宽度为100% */
-            height: 100vh; /* 设置div的高度为视口高度，即整个页面高度 */
-            background-color: var(--carousel-bg-color);
-            padding: 10px;
-            text-align: center;
-            background-image: url('https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BB1msMpB.img'); /* 设置背景图片路径 */
-            background-size: cover; /* 使背景图片自适应div，并保持图片的纵横比 */
-            background-position: center; /* 背景图片居中显示 */
-            background-repeat: no-repeat; /* 防止背景图片重复 */
-        }
-
-        .carousel {
-            background-color: var(--carousel-bg-color);
-            padding: 10px;
-            justify-content: center;
-            align-items: center;
+      .advertisement {
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
         }
-        .carousel-item {
-            transition: flex 0.5s ease-in-out;
-            position: relative;
-            display: inline-block;
-        }
-        .carousel img {
-            width: var(--carousel-img-width);
-            height: var(--carousel-img-height);
-            margin: 1px;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-        .carousel img:hover {
-            transform: scale(1.1);
-        }
-        .carousel-item .description {
-            width: 100%;
-            background-color: rgba(0, 0, 0,0.3);
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            border-radius: 10px;
-        }
-
-        .advertisement {
-            text-align: center;
-        }
-        footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background-color: var(--header-footer-bg-color);
-            color: var(--text-color);
-            padding: 1px;
-            text-align: center;
-        }
-
     </style>
 </head>
+
 <body>
-<header>
-    <h1>Yorbest</h1>
-</header>
-<nav>
-    <a href="#" class="tab-link active" onclick="openTab(event, 'tab1')">磁贴链接</a>
-    <a href="#" class="tab-link" onclick="openTab(event, 'tab2')">图片链接</a>
-    <a href="#" class="tab-link" onclick="openTab(event, 'tab3')">广而告之</a>
-</nav>
-<div id="tab1" class="tab-content active">
-    <div class="caro" >
-        <div class="tile">
-            <a href=" " target="_blank">我的磁贴</a>
+    <header>
+        <h1>Yorbest</h1>
+    </header>
+    <nav>
+        <a href="#" class="tab-link active" onclick="openTab(event, 'tab1')">Home</a>
+        <a href="#" class="tab-link" onclick="openTab(event, 'tab2')">Company</a>
+        <a href="#" class="tab-link" onclick="openTab(event, 'tab3')">Products</a>
+    </nav>
+    <div id="tab1" class="tab-content active">
+	  <!-- 图片轮播图区域 -->
+        <div class="container mt-1">
+            <div class="slider">
+                <div><a href="https://www.shengmaomachine.com/" target="_blank""><img src="https://www.shengmaomachine.com/data/upload/20191113/5dcbc3c27d5901920_750.webp" alt="Image 1"></a></div>
+                <div><a href="https://www.shengmaomachine.com/" target="_blank""><img src="https://www.shengmaomachine.com/data/upload/20191113/5dcbc3cbcd1151920_750.webp" alt="Image 2"></a></div>
+                <div><a href="https://www.shengmaomachine.com/" target="_blank""><img src="https://www.shengmaomachine.com/data/upload/20191113/5dcbc3bc60f121920_750.webp" alt="Image 3"></a></div>
+            </div>
         </div>
-        <div class="tile">
-            <a href=" " target="_blank">我的磁贴</a>
+        <!-- 视频播放区域 -->
+        <div class="container mt-1">
+            <video controls width="100%">
+                <source src="https://videocdn.alibaba.com/4f4e1c368ac918af/650f469ef1dedbf8/20240205_02caa2f3777ca327_448777776155_mp4_264_hd_unlimit_taobao.mp4" type="video/mp4">
+				<source src="https://videocdn.alibaba.com/4f4e1c368ac918af/650f469ef1dedbf8/20240205_02caa2f3777ca327_448777776155_mp4_264_hd_unlimit_taobao.mp4" type="video/webm">
+				<source src="https://videocdn.alibaba.com/4f4e1c368ac918af/650f469ef1dedbf8/20240205_02caa2f3777ca327_448777776155_mp4_264_hd_unlimit_taobao.mp4" type="video/ogg">
+            </video>
         </div>
-        <div class="tile">
-            <a href="" target="_blank">我的磁贴</a>
-        </div>
-        <div class="tile">
-            <a href="#" target="_blank">我的磁贴</a>
-        </div>
-        <div class="tile">
-            <a href="#" target="_blank">我的磁贴</a>
-        </div>
-        <div class="tile">
-            <a href="#" target="_blank">我的磁贴</a>
-        </div>
-        <div class="tile">
-            <a href="#" target="_blank">我的磁贴</a>
-        </div>
-        <div class="tile">
-            <a href="#" target="_blank">我的磁贴</a>
-        </div>
-        <div class="tile">
-            <a href="#" target="_blank">我的磁贴</a>
-        </div>
-        <div class="tile">
-            <a href="#" target="_blank">我的磁贴</a>
-        </div>
-        <div class="tile">
-            <a href="#" target="_blank">我的磁贴</a>
-        </div>
-        <div class="tile">
-            <a href="#" target="_blank">我的磁贴</a>
-        </div>
-    </div>
-</div>
-<div id="tab2" class="tab-content inactive">
-    <div class="carousel">
-    <div class="carousel carousel-item">
-         <a href="https://www.amz123.com/" target="_blank"> <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BB1msyOb.img"></a>
-        <div class="description">跨境工具-AMZ123</div>
-    </div>
-    <div class="carousel carousel-item">
-        <a href="https://www.m123.com/" target="_blank"> <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BB1msKSk.img"></a>
-        <div class="description">跨境工具-M123</div>
-    </div>
-    <div class="carousel carousel-item">
-        <a href="https://wivo.cc/" target="_blank"> <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA11MDeO.img"></a>
-            <div class="description">跨境工具-A+</div>
-    </div>
-    <div class="carousel carousel-item">
-        <a href="https://box.adsfancy.com/" target="_blank"> <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA12sjd1.img"></a>
-            <div class="description">跨境工具-Box</div>
+    <!-- 个人说明区域 -->
+	<hr/>
+    <div class="container mt-3">
+         Contact Me:  
+		<ul>
+                <li>Gmail: marklinkto@gmail.com</li>
+                <li>Mobile Phone(+86) & WeChat & FaceBook: 15093390079</li>
+        </ul>
     </div>
     </div>
-</div>
-<div id="tab3" class="tab-content inactive">
-    <div class="advertisement">
-         <h1>恭喜发财</h1>
+    <div id="tab2" class="tab-content inactive">
+        <div class="advertisement">
+            <h1>About  Shengmao</h1>
+			<p>Since its foundation in 2001, Henan shengmao machinery Co.,ltd. has developed into one of the leading construction machinery suppliers in China. We have made a mark in China market as a reliable and long-term supplier of construction machinery to over 1000 clients from all over the world.</p>
+            <p>Our factory is located in Zhengzhou city which is known as the "home to construction machinery" in China. In Zhengzhou city, there are hundreds of manufacturers of construction machinery parts supplier, we can find all the parts we need to produce construction machinery within half an hour's drive. Further more, we have enough skillful welding and painting workers here due to over 50-year history of construction machine industry in this city. Thanks to the above two main reasons, we can supply to our clients with high quality construction machinery with competitive prices.</p>
+            <p>In today's fast paced world, many leading companies are looking for more than just a costruction machinery supplier. They want a supply partner to understand their requirements, vision, goals and bussiness strategies. A supply partner that can offer a range of solutions to meet the needs of whatever special requirements of their projects have. A supply partner who listens, understands and acts on what is required by providing innovative solutions. Henan shengmao machinery Co.,ltd already makes this difference to all its clients by being a long-term and reliable construction machinery supplier. Contact us today to see how we can make the difference for you.</p>
+		</div>
+		 
+		<div>
+ 
+		 Contact Our:  
+		<ul>
+                <li>My Gmail: marklinkto@gmail.com</li>
+                <li>My Mobile Phone(+86) & WeChat & FaceBook: 15093390079</li>
+		        <li>Company Tel.: +86 371 8653 3192 </li>
+				<li>Company WebSite: <a href="https://www.shengmaomachine.com/" target="_blank">www.shengmaomachine.com</a></li>
+				<li>Company Alibaba Store: <a href="https://shengmaomachinery.en.alibaba.com/?spm=a2700.29482153.0.0.739371d2Jza4H5" target="_blank">shengmaomachinery.en.alibaba.com</a> </li>   
+                <li>Our Factory address: Xida Village, Wangcun Town, Xingyang, Zhengzhou City, Henan Province, China.</li>
+        </ul>
+		</div>
+    </div>
+    <div id="tab3" class="tab-content inactive">
+          <!-- 视频播放区域 -->
+        <div class="container mt-1">
+            <video controls width="100%">
+                <source src="https://videocdn.alibaba.com/4f4e1c368ac918af/650f469ef1dedbf8/20240205_02caa2f3777ca327_448777776155_mp4_264_hd_unlimit_taobao.mp4" type="video/mp4">
+				<source src="https://videocdn.alibaba.com/4f4e1c368ac918af/650f469ef1dedbf8/20240205_02caa2f3777ca327_448777776155_mp4_264_hd_unlimit_taobao.mp4" type="video/webm">
+				<source src="https://videocdn.alibaba.com/4f4e1c368ac918af/650f469ef1dedbf8/20240205_02caa2f3777ca327_448777776155_mp4_264_hd_unlimit_taobao.mp4" type="video/ogg">
+            </video>
+        </div>
+    </div>
+    <footer>
+        <p> &copy;2020 Yorbest </p>
+    </footer>
+    <!-- 引入 Bootstrap JS 和 jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- 引入 Slick 轮播图插件 JS -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+                tabcontent[i].classList.add("inactive");
+            }
+            tablinks = document.getElementsByClassName("tab-link");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.remove("inactive");
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        };
+        $(document).ready(function () {
+            // 初始化轮播图并设置自动播放和自适应屏幕
+            $('.slider').slick({
+                dots: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            arrows: false
+                        }
+                    }
+                ]
+            });
+            // 窗口大小改变时重新调整轮播图尺寸
+            $(window).resize(function () {
+                $('.slider').slick('resize');
+            });
+        });
+    </script>
 
-    </div>
-
-</div>
-<footer>
-    <p> &copy;2020 Yorbest </p>
-</footer>
-<script>
-    function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tab-content");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].classList.remove("active");
-            tabcontent[i].classList.add("inactive");
-        }
-        tablinks = document.getElementsByClassName("tab-link");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].classList.remove("active");
-        }
-        document.getElementById(tabName).classList.remove("inactive");
-        document.getElementById(tabName).classList.add("active");
-        evt.currentTarget.classList.add("active");
-    }
-</script>
 </body>
+
 </html>
