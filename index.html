@@ -1,209 +1,335 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mark</title>
-    <!-- 引入 Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- 引入 Slick 轮播图插件 CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" />
-    <style>
-      .slider img {
-            max-width: 100%;
-            height: auto;
-            object-fit: contain;
-            border-radius: 10px;
-        }
-      .navbar-custom {
-            background-color: #3498db;
-            color: white;
-        }
-        :root {
-            --primary-color: #f5c301;
-            --secondary-color: #ddd;
-            --text-color: #bcaa0a;
-            --link-color: #011a22;
-            --link-hover-color: #fff;
-            --tab-bg-color: #000000;
-            --tab-active-color: #fff;
-            --tab-inactive-color: #ddd;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fff;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        header, footer {
-            background-color: var(--header-footer-bg-color);
-            color: var(--text-color);
-            padding: 10px;
-            text-align: center;
-        }
-        h1 {
-            margin: 0;
-        }
-        nav {
-            background-color: var(--tab-bg-color);
-            color: #fff;
-            padding: 15px;
-            text-align: center;
-        }
-        nav a {
-            color: var(--link-color);
-            text-decoration: none;
-            margin: 0 10px;
-            padding: 10px 10px;
-            background-color: var(--tab-inactive-color);
-            border-radius: 0;
-            transition: background-color 0.3s ease;
-        }
-        nav a:hover {
-            background-color: var(--link-hover-color);
-            color: var(--primary-color);
-        }
-        nav a.active {
-            background-color: var(--tab-active-color);
-            color: var(--primary-color);
-        }
-      .tab-content {
-            padding: 10px;
-            background-color: #fff;
-            flex: 1;
-        }
-      .tab-content.active {
-            display: block;
-        }
-      .tab-content.inactive {
-            display: none;
-        }
-      .advertisement {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-        }
-    </style>
-</head>
-
-<body>
-    <nav>
-        <a href="#" class="tab-link active" onclick="openTab(event, 'tab1')">Home</a>
-        <a href="#" class="tab-link" onclick="openTab(event, 'tab2')">Company</a>
-       <!--  <a href="#" class="tab-link" onclick="openTab(event, 'tab3')">Products</a> -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Probably the most complete UI kit out there. Multiple functionalities and controls added,  extended color palette and beautiful typography, designed as its own extended version of Bootstrap at  the highest level of quality.                             ">
+    <meta name="author" content="Webpixels">
+    <title>Boomerang UI Kit - Free Bootstrap Framework by Webpixels</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800|Roboto:400,500,700" rel="stylesheet">
+    <!-- Theme CSS -->
+    <link type="text/css" href="../assets/css/theme.csscccc" rel="stylesheet">
+	<link type="text/css" href="https://boomerang.bootmb.com/assets/css/theme.css" rel="stylesheet">
+    
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-transparent navbar-dark bg-dark py-4">
+      <div class="container">
+        <a class="navbar-brand" href="../"><strong>Mark</strong> Web Home</a>
+        <button class="navbar-toggler" type="button" data-action="offcanvas-open" data-target="#navbar_main" aria-controls="navbar_main" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse offcanvas-collapse" id="navbar_main">
+          <ul class="navbar-nav ml-auto align-items-lg-center">
+            
+            <li class="nav-item ">
+              <a class="nav-link" href="../index.html">Overview</a>
+            </li>
+        
+            <div class="dropdown-divider d-lg-none my-4"></div>
+           
+            <li class="nav-item">
+              <a class="nav-link nav-link-icon" href="https://instagram.com/webpixelsofficial/" target="_blank"><i class="fab fa-instagram"></i><span class="ml-2 d-lg-none">Instagram</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-icon" href="https://web.facebook.com/webpixels" target="_blank"><i class="fab fa-facebook"></i><span class="ml-2 d-lg-none">Facebook</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-icon" href="https://dribbble.com/webpixels" target="_blank"><i class="fab fa-dribbble"></i><span class="ml-2 d-lg-none">Dribbble</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-icon" href="https://github.com/webpixels" target="_blank"><i class="fab fa-github"></i><span class="ml-2 d-lg-none">Github</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </nav>
-    <div id="tab1" class="tab-content active">
-	  <!-- 图片轮播图区域 -->
-        <div class="container mt-1">
-            <div class="slider">
-                <div><a href="#" target="_blank""><img src="https://www.shengmaomachine.com/data/upload/20191113/5dcbc3c27d5901920_750.webp" alt="Image 1"></a></div>
-                <div><a href="#" target="_blank""><img src="https://www.shengmaomachine.com/data/upload/20191113/5dcbc3cbcd1151920_750.webp" alt="Image 2"></a></div>
-                <div><a href="#" target="_blank""><img src="https://www.shengmaomachine.com/data/upload/20191113/5dcbc3bc60f121920_750.webp" alt="Image 3"></a></div>
+    <main class="main">
+	      <section class="spotlight parallax bg-cover bg-size--cover" data-spotlight="fullscreen" style="background-image: url('../assets/images/backgrounds/img-3.jpg')">
+        <span class="mask bg-tertiary alpha-7"></span>
+        <div class="spotlight-holder py-lg pt-lg-xl">
+          <div class="container d-flex align-items-center no-padding">
+            <div class="col">
+              <div class="row cols-xs-space align-items-center text-center text-md-left justify-content-center">
+                <div class="col-lg-7">
+                  <div class="text-center mt-5">
+                    <h1 class="heading h1 text-white">
+                      Hi, nice to meet you!
+                    </h1>
+                    <p class="lead lh-180 text-white mt-3">
+                      We put all the experience and know-how in Boomerang so we can offer you the best product we have ever built.
+                    </p>
+                    <div class="mt-5">
+                      <a href="#" class="btn btn-primary mr-3">Our services</a>
+                      <a href="#" class="btn btn-secondary">Meet the team</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-        <!-- 视频播放区域 
-        <div class="container mt-1">
-            <video controls width="100%">
-                <source src="https://videocdn.alibaba.com/4f4e1c368ac918af/650f469ef1dedbf8/20240205_02caa2f3777ca327_448777776155_mp4_264_hd_unlimit_taobao.mp4" type="video/mp4">
-		<source src="https://videocdn.alibaba.com/4f4e1c368ac918af/650f469ef1dedbf8/20240205_02caa2f3777ca327_448777776155_mp4_264_hd_unlimit_taobao.mp4" type="video/webm">
-		<source src="https://videocdn.alibaba.com/4f4e1c368ac918af/650f469ef1dedbf8/20240205_02caa2f3777ca327_448777776155_mp4_264_hd_unlimit_taobao.mp4" type="video/ogg">
-            </video>
+      </section>
+
+	     <section class="slice slice-lg">
+        <div class="container">
+         
+          <div class="row cols-xs-space cols-sm-space cols-md-space">
+            <div class="col-lg-4">
+              <div class="card border-0">
+                <img class="rounded z-depth-3 img-fluid" src="../assets/images/prv/img-3-800x600.jpg" alt="Image description">
+                <div class="pt-4">
+                  <h5 class="card-title">Free updates</h5>
+                  <p class="card-text">Each theme comes with updates for the life of the theme. This means you'll never pay for any bug-fixes and compatibility upgrades for your theme, ever.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card border-0">
+                <img class="rounded z-depth-3 img-fluid" src="../assets/images/prv/img-2-800x600.jpg" alt="Image description">
+                <div class="pt-4">
+                  <h5 class="card-title">Licenses</h5>
+                  <p class="card-text">All our themes have three simple licenses. Free, Multiple and Exteneded Use license are availabled and you can learn more <a href="#">here</a>.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card border-0">
+                <img class="rounded z-depth-3 img-fluid" src="../assets/images/prv/img-1-800x600.jpg" alt="Image description">
+                <div class="pt-4">
+                  <h5 class="card-title">Technical support</h5>
+                  <p class="card-text">We're here to help with your Boomerang UI questions. Shoot us an email at support@webpixels.io and we'll get back to you ASAP.</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-	-->
-    <!-- 个人说明区域 -->
-	<hr/>
-    <div class="container mt-3">
-         Contact Mark:  
-		<ul>
-		        <li>Email: mark@shengmaomachine.com</li>
-                <li>Gmail: marklinkto@gmail.com</li>
-                <li>WeChat&FaceBook: 15093390079</li>
-        </ul>
-		 <p>I'm the sales manager of Henan shengmao company. </p>
-		 If you have any need to purchase mechanical equipment, you can contact me anytime and anywhere.
-    </div>
-    </div>
-    <div id="tab2" class="tab-content inactive">
-        <div class="advertisement">
-            <h1>About  ShengMao</h1>
-			<p>Since its foundation in 2001, Henan shengmao machinery Co.,ltd. has developed into one of the leading construction machinery suppliers in China. We have made a mark in China market as a reliable and long-term supplier of construction machinery to over 1000 clients from all over the world.</p>
-            <p>Our factory is located in Zhengzhou city which is known as the "home to construction machinery" in China. In Zhengzhou city, there are hundreds of manufacturers of construction machinery parts supplier, we can find all the parts we need to produce construction machinery within half an hour's drive. Further more, we have enough skillful welding and painting workers here due to over 50-year history of construction machine industry in this city. Thanks to the above two main reasons, we can supply to our clients with high quality construction machinery with competitive prices.</p>
-		</div>
-		 
-		<div>
+      </section>
+	   <section class="py-5 bg-lighter border-top border-bottom" id="scrollToSection">
+        <div class="container">
+          <div class="d-flex align-items-center justify-content-center">
+            <a href="#" class="btn btn-danger btn-icon-only btn-zoom--hover rounded-circle">
+              <span class="btn-inner--icon"><i class="fas fa-heart"></i></span>
+            </a>
+            <span class="heading h4 ml-3 mb-0">Build professional and modern looking websites in no time.</span>
+          </div>
+        </div>
+      </section>
+	     <section class="slice-lg">
+        <div class="container">
+          <div class="row align-items-center cols-xs-space cols-sm-space cols-md-space">
+            <div class="col-lg-6 order-lg-2 ml-lg-auto">
+              <div class="block block-image">
+                <img src="../assets/images/prv/device-1.png" class="img-fluid img-center">
+              </div>
+            </div>
+            <div class="col-lg-5 order-lg-1">
+              <div class="row-wrapper">
+                <div class="row">
+                  <div class="col">
+                    <div class="d-flex align-items-start">
+                      <div class="icon icon-lg">
+                        <i class="fab fa-twitter"></i>
+                      </div>
+                      <div class="icon-text">
+                        <h3 class="heading h4">Latest Bootstrap framework</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="d-flex align-items-start">
+                      <div class="icon icon-lg">
+                        <i class="fab fa-sass"></i>
+                      </div>
+                      <div class="icon-text">
+                        <h3 class="heading h4">Built with Sass <small>(included)</small></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="d-flex align-items-start">
+                      <div class="icon icon-lg">
+                        <i class="fas fa-tint"></i>
+                      </div>
+                      <div class="icon-text">
+                        <h3 class="heading h4">Extended color palette</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+        <section class="py-5 bg-lighter border-top border-bottom" id="scrollToSection">
+        <div class="container">
+          <div class="d-flex align-items-center justify-content-center">
+            <a href="#" class="btn btn-danger btn-icon-only btn-zoom--hover rounded-circle">
+              <span class="btn-inner--icon"><i class="fas fa-heart"></i></span>
+            </a>
+            <span class="heading h4 ml-3 mb-0">Build professional and modern looking websites in no time.</span>
+          </div>
+        </div>
+      </section>
+    
+      <section class="slice slice-lg">
+        <div class="container">
+   
+          <div class="row-wrapper">
+            <div class="row cols-xs-space cols-sm-space cols-md-space">
+              <div class="col-md-6">
+                <div class="card bg-primary">
+                  <div class="card-body py-5">
+                    <div class="d-flex align-items-start">
+                      <div class="icon text-primary">
+                        <i class="fab fa-twitter text-white"></i>
+                      </div>
+                      <div class="icon-text">
+                        <h3 class="heading text-white h4">Latest Bootstrap framework <small>(v4.0.0)</small></h3>
+                        <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card">
+                  <div class="card-body py-5">
+                    <div class="d-flex align-items-start">
+                      <div class="icon text-primary">
+                        <i class="fab fa-sass"></i>
+                      </div>
+                      <div class="icon-text">
+                        <h3 class="heading h4">Built with Sass <small>(included)</small></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row cols-xs-space cols-sm-space cols-md-space">
+              <div class="col-md-6">
+                <div class="card bg-primary">
+                  <div class="card-body py-5">
+                    <div class="d-flex align-items-start">
+                      <div class="icon text-primary">
+                        <i class="fas fa-th-large text-white"></i>
+                      </div>
+                      <div class="icon-text">
+                        <h3 class="heading text-white h4">50 customized components</h3>
+                        <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card">
+                  <div class="card-body py-5">
+                    <div class="d-flex align-items-start">
+                      <div class="icon text-primary">
+                        <i class="fas fa-tint"></i>
+                      </div>
+                      <div class="icon-text">
+                        <h3 class="heading h4">Extended color palette</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
  
-		 Contact Our:  
-		<ul>
-                <li>My Gmail: marklinkto@gmail.com</li>
-                <li>My Mobile Phone & WeChat & FaceBook: 15093390079</li>
-		        <li>Company Tel.: +86 371 8653 3192 </li>
-			<li>Our Factory address: Xida Village, Wangcun Town, Xingyang, Zhengzhou City, Henan Province, China.</li>
-        </ul>
-		</div>
-    </div>
-    <div id="tab3" class="tab-content inactive">
-        text
-    </div>
-    <footer>
-        <p>Copyright &copy;  Mark Xue  </p>
+       
+    </main>
+    <footer class="pt-5 pb-3 footer  footer-dark bg-tertiary">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-4">
+            <div class="pr-lg-5">
+              <h1 class="heading h6 text-uppercase font-weight-700 mb-3"><strong>Boomerang</strong> UI Kit</h1>
+              <p> This theme was designed as its own extended version of Bootstrap with multiple functionalities and controls added, extended color palette and beautiful typography.</p>
+            </div>
+          </div>
+          <div class="col-6 col-md">
+            <h5 class="heading h6 text-uppercase font-weight-700 mb-3">Features</h5>
+            <ul class="list-unstyled text-small">
+              <li><a class="text-muted" href="#">Cool stuff</a></li>
+              <li><a class="text-muted" href="#">Random feature</a></li>
+              <li><a class="text-muted" href="#">Team feature</a></li>
+ 
+            </ul>
+          </div>
+          <div class="col-6 col-md">
+            <h5 class="heading h6 text-uppercase font-weight-700 mb-3">Solutions</h5>
+            <ul class="list-unstyled text-small">
+              <li><a class="text-muted" href="#">Resource</a></li>
+              <li><a class="text-muted" href="#">Resource name</a></li>
+              <li><a class="text-muted" href="#">Another resource</a></li>
+ 
+            </ul>
+          </div>
+          <div class="col-6 col-md">
+            <h5 class="heading h6 text-uppercase font-weight-700 mb-3">Resources</h5>
+            <ul class="list-unstyled text-small">
+              <li><a class="text-muted" href="#">Business</a></li>
+              <li><a class="text-muted" href="#">Education</a></li>
+              <li><a class="text-muted" href="#">Government</a></li>
+ 
+            </ul>
+          </div>
+          <div class="col-6 col-md">
+            <h5 class="heading h6 text-uppercase font-weight-700 mb-3">About</h5>
+            <ul class="list-unstyled text-small">
+              <li><a class="text-muted" href="#">Team</a></li>
+              <li><a class="text-muted" href="#">Locations</a></li>
+              <li><a class="text-muted" href="#">Privacy</a></li>
+ 
+            </ul>
+          </div>
+        </div>
+        <hr>
+        <div class="d-flex align-items-center">
+          <span class="">
+            &copy; 2018 <a href="https://webpixels.io/" class="footer-link" target="_blank">Webpixels</a>. All rights reserved.
+          </span>
+          <ul class="nav ml-lg-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="https://instagram.com/webpixelsofficial" target="_blank"><i class="fab fa-instagram"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://facebook.com/webpixels" target="_blank"><i class="fab fa-facebook"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/webpixels" target="_blank"><i class="fab fa-github"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://dribbble.com/webpixels" target="_blank"><i class="fab fa-dribbble"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </footer>
-    <!-- 引入 Bootstrap JS 和 jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- 引入 Slick 轮播图插件 JS -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-    <script>
-        function openTab(evt, tabName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].classList.remove("active");
-                tabcontent[i].classList.add("inactive");
-            }
-            tablinks = document.getElementsByClassName("tab-link");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].classList.remove("active");
-            }
-            document.getElementById(tabName).classList.remove("inactive");
-            document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
-        };
-        $(document).ready(function () {
-            // 初始化轮播图并设置自动播放和自适应屏幕
-            $('.slider').slick({
-                dots: true,
-                infinite: true,
-                speed: 500,
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 2000,
-                responsive: [
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                            arrows: false
-                        }
-                    }
-                ]
-            });
-            // 窗口大小改变时重新调整轮播图尺寸
-            $(window).resize(function () {
-                $('.slider').slick('resize');
-            });
-        });
-    </script>
-
-</body>
-
+    <!-- Core -->
+ 
+    <!-- FontAwesome 5 -->
+    <script src="../assets/vendor/fontawesome/js/fontawesome-all.min.js" defer></script>
+    <!-- Page plugins -->
+    
+    <!-- Theme JS -->
+   
+  </body>
 </html>
